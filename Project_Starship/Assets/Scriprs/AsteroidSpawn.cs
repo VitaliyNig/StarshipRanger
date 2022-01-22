@@ -10,7 +10,7 @@ public class AsteroidSpawn : MonoBehaviour
     public float spawnRate = 0f;
     public float asteroidSpeed = 0f;
     public Vector3 screenSize;
-    public float score;
+    public int score;
     public float asteroidCount;
 
     void Start()
@@ -23,8 +23,8 @@ public class AsteroidSpawn : MonoBehaviour
 
     void Difficulty()
     {
-        score = float.Parse(GameObject.Find("CountScore").GetComponent<Text>().text);
-        if(score % 10f == 0)
+        score = int.Parse(GameObject.Find("CountScore").GetComponent<Text>().text);
+        if(score % 10 == 0)
         {
             asteroidSpeed += 0.05f;
             if(spawnRate > 0.05f)
@@ -36,7 +36,7 @@ public class AsteroidSpawn : MonoBehaviour
                 spawnRate = 0f;
             }
         }
-        if(score % 500f == 0)
+        if(score % 500 == 0)
         {
             spawnRate = 1f;
             asteroidCount++;

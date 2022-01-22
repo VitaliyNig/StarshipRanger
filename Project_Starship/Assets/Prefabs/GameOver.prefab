@@ -89,7 +89,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 701767707891984829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffb7c52162bd8574a88a9f8ceb880723, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dbdbadf5d498ac48a1e7c466a1eed8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7319654766055861013
@@ -289,8 +289,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4642637268285585332}
-        m_TargetAssemblyTypeName: GameOverButton, Assembly-CSharp
-        m_MethodName: Retry
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -580,7 +580,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4642637268285585332}
-        m_TargetAssemblyTypeName: GameOverButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
