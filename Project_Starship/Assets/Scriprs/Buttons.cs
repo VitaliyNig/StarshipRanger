@@ -25,4 +25,47 @@ public class Buttons : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void GameHangar()
+    {
+        SceneManager.LoadScene("Hangar");
+    }
+
+    public void HangarLeft()
+    {
+        MenuSpaceship menuSpaceship = GameObject.Find("Main Camera").GetComponent<MenuSpaceship>();
+        int count = menuSpaceship.spaceshipPrefab.Count - 1;
+        int id = menuSpaceship.spaceshipId;
+        if(id == 0)
+        {
+            menuSpaceship.spaceshipId = count;
+        }
+        else
+        {
+            menuSpaceship.spaceshipId = id - 1;
+        }
+        menuSpaceship.Reload();
+    }
+
+    public void HangarRight()
+    {
+        MenuSpaceship menuSpaceship = GameObject.Find("Main Camera").GetComponent<MenuSpaceship>();
+        int count = menuSpaceship.spaceshipPrefab.Count - 1;
+        int id = menuSpaceship.spaceshipId;
+        if(id == count)
+        {
+            menuSpaceship.spaceshipId = 0;
+        }
+        else
+        {
+            menuSpaceship.spaceshipId = id + 1;
+        }
+        menuSpaceship.Reload();
+    }
+
+    public void HangarSelect()
+    {
+        MenuSpaceship menuSpaceship = GameObject.Find("Main Camera").GetComponent<MenuSpaceship>();
+        PlayerPrefs.SetInt("SpaceshipId", menuSpaceship.spaceshipId);
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public Text ScoreText;
+    Text ScoreText;
     public bool GameIsActive = true;
 
     void Start()
@@ -23,6 +23,10 @@ public class Score : MonoBehaviour
             int score = int.Parse(ScoreText.text);
             score += 1;
             ScoreText.text = score.ToString();
+        }
+        else
+        {
+            CancelInvoke("UpdateScore");
         }
     }
 }

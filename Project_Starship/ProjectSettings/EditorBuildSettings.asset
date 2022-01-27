@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Leaderboard.unity
     guid: 518ab6b1d73eb1d4687f0df146267786
+  - enabled: 1
+    path: Assets/Scenes/Hangar.unity
+    guid: 4924b60c33ba9854081ee2faf329c4b4
   m_configObjects: {}

@@ -4,18 +4,30 @@ using UnityEngine;
 
 public class MenuSpaceship : MonoBehaviour
 {
-    public GameObject spaceshipPrefab;
-    public float spawnPosX = 0f;
-    public float spawnPosY = 0f;
-    public float spawnPosZ = 0f;
-    public float spawnRotate1 = 0f;
-    public float spawnRotate2 = 0f;
-    public float spawnRotate3 = 0f;
+    public List<GameObject> spaceshipPrefab;
+    GameObject spaceshipGO;
+    public int spaceshipId = 2;
+    public Vector3 spawnPos;
+    public Vector3 spawnRotate;
 
     void Start()
     {
-        GameObject asteroidGO = Instantiate<GameObject>(spaceshipPrefab);
-        asteroidGO.transform.Rotate(spawnRotate1, spawnRotate2, spawnRotate3, Space.Self);
-        asteroidGO.transform.position = new Vector3(spawnPosX, spawnPosY, spawnPosZ);
+        if(PlayerPrefs.HasKey("SpaceshipId"))
+        {
+            spaceshipId = PlayerPrefs.GetInt("SpaceshipId");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("SpaceshipId", 2);
+        }
+        Reload();
+    }
+
+    public void Reload()
+    {
+        Destroy(spaceshipGO);
+        spaceshipGO = Instantiate<GameObject>(spaceshipPrefab[spaceshipId]);
+        spaceshipGO.transform.Rotate(spawnRotate, Space.Self);
+        spaceshipGO.transform.position = spawnPos;
     }
 }

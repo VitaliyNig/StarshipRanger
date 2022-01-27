@@ -5,37 +5,17 @@ using UnityEngine.UI;
 using PlayFab;
 using PlayFab.ClientModels;
 
-public class PlayFabManager : MonoBehaviour
+public class PlayFabLeaderboard : MonoBehaviour
 {
     public GameObject rowPrefab;
     public Transform rowsParent;
-
+    
     void Start()
     {
-        Login();
-    }
-    
-    void Login()
-    {
-        var request = new LoginWithCustomIDRequest{
-            CustomId = SystemInfo.deviceUniqueIdentifier,
-            CreateAccount = true
-        };
-        PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
+        GetLeaderboard();
     }
 
-    void OnSuccess(LoginResult result)
-    {
-        Debug.Log("Login account");
-    }
-
-    void OnError(PlayFabError error)
-    {
-        Debug.Log("Error");
-        Debug.Log(error.GenerateErrorReport());
-    }
-
-    public void SendLeaderboard(int score)
+    public void SetLeaderboard(int score)
     {
         var request = new UpdatePlayerStatisticsRequest{
             Statistics = new List<StatisticUpdate>{
@@ -45,10 +25,10 @@ public class PlayFabManager : MonoBehaviour
                 }
             }
         };
-        PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderboardUpdate, OnError);
+        PlayFabClientAPI.UpdatePlayerStatistics(request, OnSetLeaderboard, OnError);
     }
 
-    void OnLeaderboardUpdate(UpdatePlayerStatisticsResult result)
+    void OnSetLeaderboard(UpdatePlayerStatisticsResult result)
     {
         Debug.Log("Leaderboard Update");
     }
@@ -58,12 +38,12 @@ public class PlayFabManager : MonoBehaviour
         var request = new GetLeaderboardRequest{
             StatisticName = "GameSpore", 
             StartPosition = 0,
-            MaxResultsCount = 10
+            MaxResultsCount = 100
         };
-        PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnError);
+        PlayFabClientAPI.GetLeaderboard(request, OnGetLeaderboard, OnError);
     }
 
-    void OnLeaderboardGet(GetLeaderboardResult result)
+    void OnGetLeaderboard(GetLeaderboardResult result)
     {
         foreach(Transform item in rowsParent)
         {
@@ -81,9 +61,9 @@ public class PlayFabManager : MonoBehaviour
         }
     }
 
-    public string GetDeviceId()
+    void OnError(PlayFabError error)
     {
-        string deviceId = SystemInfo.deviceUniqueIdentifier;
-        return deviceId;
+        Debug.Log("Leaderboard Error");
+        Debug.Log(error.GenerateErrorReport());
     }
 }

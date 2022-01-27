@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1697734238249392311}
   - component: {fileID: 1697734238249392308}
   - component: {fileID: 1282622543827359736}
+  - component: {fileID: -4223301815323817411}
+  - component: {fileID: -7242234848476769484}
   m_Layer: 5
   m_Name: Respawn
   m_TagString: Untagged
@@ -98,6 +100,32 @@ MonoBehaviour:
   gameOverUI: {fileID: 701767707891984829, guid: acc21757d59ee564bbfc5ea06af49da7,
     type: 3}
   TimeIsVisible: 5
+--- !u!114 &-4223301815323817411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697734238249392314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0702e6a4e35f3440bf4759ccb84772e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rowPrefab: {fileID: 0}
+  rowsParent: {fileID: 0}
+--- !u!114 &-7242234848476769484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697734238249392314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15206c1e862d97f4c96f7969515b0d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5208585907362305440
 GameObject:
   m_ObjectHideFlags: 0

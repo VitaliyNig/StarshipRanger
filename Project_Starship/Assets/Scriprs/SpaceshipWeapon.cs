@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpaceshipWeapon : MonoBehaviour
 {
@@ -13,7 +14,11 @@ public class SpaceshipWeapon : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("SpawnBullet", rate, rate);
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.name == "DevScene")
+        {
+            InvokeRepeating("SpawnBullet", rate, rate);
+        }
     }
 
     void SpawnBullet()

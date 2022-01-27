@@ -7,7 +7,6 @@ public class GameOver : MonoBehaviour
 {
     public GameObject gameOverUI;
     public float TimeIsVisible;
-    PlayFabManager playFabManager;
 
     void Start()
     {
@@ -25,6 +24,17 @@ public class GameOver : MonoBehaviour
     {
         GameObject gameOverMenu = Instantiate<GameObject>(gameOverUI, GameObject.Find("Canvas").transform);
         int score = int.Parse(GameObject.Find("CountScore").GetComponent<Text>().text);
-        GameObject.Find("Main Camera").GetComponent<PlayFabManager>().SendLeaderboard(score);
+        if(PlayerPrefs.HasKey("BestScore"))
+        {
+            if(PlayerPrefs.GetInt("BestScore") < score)
+            {
+                this.gameObject.GetComponent<PlayFabLeaderboard>().SetLeaderboard(score);
+                PlayerPrefs.SetInt("BestScore", score);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("BestScore", score);
+        }
     }
 }
