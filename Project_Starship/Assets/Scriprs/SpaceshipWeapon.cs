@@ -7,7 +7,6 @@ public class SpaceshipWeapon : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public GameObject spaceshipPrefab;
-    Rigidbody aRigidbody;
     public float rate = 0f;
     public float spawnPosZ = 0f;
     public float bulletSpeed = 0f;
@@ -27,7 +26,6 @@ public class SpaceshipWeapon : MonoBehaviour
         Vector3 bulletPos = Vector3.zero;
         bulletPos.z = spawnPosZ;
         bulletGO.transform.position = spaceshipPrefab.transform.position + bulletPos;
-        aRigidbody = bulletGO.GetComponent<Rigidbody>();
-        aRigidbody.AddForce(0f, 0f, bulletSpeed, ForceMode.Impulse);
+        bulletGO.GetComponent<Rigidbody>().AddForce(0f, 0f, bulletSpeed, ForceMode.Impulse);
     }
 }

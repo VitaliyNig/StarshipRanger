@@ -567,8 +567,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa76d22717c7e8049be6e2967009b324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceshipPrefab: {fileID: 2058328491886976491, guid: 833a2cf9fad55b745a626ddfa1473439,
-    type: 3}
+  spaceshipPrefab:
+  - {fileID: 6885053523598291022, guid: 3b0a2cc751aacfe40860c6d2bf82e11e, type: 3}
+  - {fileID: 5680057378446250157, guid: b44ed87a5c4d8ca49bb337f49a25dc31, type: 3}
+  - {fileID: 2058328491886976491, guid: 833a2cf9fad55b745a626ddfa1473439, type: 3}
+  - {fileID: 4042469337405845484, guid: 402d2ba9b0c507e4f90f5ecce245aa3c, type: 3}
+  - {fileID: 9008026547210686442, guid: 8a6088a2a55a7f347b4aac97c92801bb, type: 3}
+  - {fileID: 6651674088675172185, guid: aae9a74406354c94d9c1abbe26e706a8, type: 3}
   screenSize: {x: 0, y: 0, z: 0}
   spawnPosY: 6
 --- !u!114 &963194230
@@ -828,7 +833,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 046cdad8ca3e1fa45bac12b7d00d97fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreText: {fileID: 0}
   GameIsActive: 1
 --- !u!1 &2133635985
 GameObject:

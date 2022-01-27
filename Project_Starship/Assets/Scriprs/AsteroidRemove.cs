@@ -5,7 +5,6 @@ using UnityEngine;
 public class AsteroidRemove : MonoBehaviour
 {
     public ParticleSystem explosionParticlePrefab;
-    ParticleSystem explosionParticle;
     
     private void OnCollisionEnter(Collision other) {
         if(other.collider.name == "AsteroidRemove")
@@ -14,8 +13,7 @@ public class AsteroidRemove : MonoBehaviour
         }
         else if(other.collider.name == "Bullet(Clone)")
         {
-            explosionParticle = ParticleSystem.Instantiate(explosionParticlePrefab, this.gameObject.transform.position, Quaternion.identity);
-            explosionParticle.Play();
+            ParticleSystem.Instantiate(explosionParticlePrefab, this.gameObject.transform.position, Quaternion.identity).Play();
             Destroy(this.gameObject);
         }
     }

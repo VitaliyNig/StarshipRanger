@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5313164466415521028}
   - component: {fileID: 4811275088722868700}
   - component: {fileID: -241005472206281781}
+  - component: {fileID: 1453593761037745787}
   m_Layer: 15
   m_Name: Spaceships_6
   m_TagString: Untagged
@@ -129,3 +130,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7321701898169678359, guid: b30cf68eade582340b213e10754f6e6d, type: 3}
+--- !u!114 &1453593761037745787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6651674088675172185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6aef11160eee8d47b16cd79bf65c0e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnUI: {fileID: 1697734238249392314, guid: 299e518cbc6e9e24e941fae252844d44,
+    type: 3}

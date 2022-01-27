@@ -22,7 +22,7 @@ public class GameOver : MonoBehaviour
 
     void GameOverMenu()
     {
-        GameObject gameOverMenu = Instantiate<GameObject>(gameOverUI, GameObject.Find("Canvas").transform);
+        Instantiate<GameObject>(gameOverUI, GameObject.Find("Canvas").transform);
         int score = int.Parse(GameObject.Find("CountScore").GetComponent<Text>().text);
         if(PlayerPrefs.HasKey("BestScore"))
         {
