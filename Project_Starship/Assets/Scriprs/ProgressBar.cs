@@ -20,4 +20,9 @@ public class ProgressBar : MonoBehaviour
     {
         progressBar.transform.localScale -= speedProgress;
     }
+
+    public void ProgressUpdatePause()
+    {
+        CancelInvoke("ProgressUpdate");
+    }
 }

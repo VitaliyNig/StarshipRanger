@@ -5,20 +5,20 @@ using UnityEngine;
 public class MenuAsteroid : MonoBehaviour
 {
     public List<GameObject> asteroidPrefab;
-    public float spawnPosX = 0f;
+    float spawnPosX = 15f;
     
     void Start()
     {
         for(int i = 0; i < 10; i++)
         {
-            SpawnAsteroid(new Vector3(Random.Range(-15f, spawnPosX), Random.Range(-15f, 15f), Random.Range(20f, 40f)));
+            SpawnAsteroid(new Vector3(Random.Range(-spawnPosX, spawnPosX), Random.Range(-15f, 15f), Random.Range(20f, 40f)));
         }
         InvokeRepeating("AsteroidPos", 0f, 1f);
     }
 
     void AsteroidPos()
     {
-        SpawnAsteroid(new Vector3(spawnPosX, Random.Range(-15f, 15f), Random.Range(20f, 40f)));
+        SpawnAsteroid(new Vector3(spawnPosX + 5f, Random.Range(-15f, 15f), Random.Range(20f, 40f)));
     }
 
     void SpawnAsteroid(Vector3 asteroidPos)

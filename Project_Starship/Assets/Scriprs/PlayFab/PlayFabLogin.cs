@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using PlayFab;
 using PlayFab.ClientModels;
 
 public class PlayFabLogin : MonoBehaviour
 { 
+    public GameObject firstStartUI;
+    
     void Start()
     {
         Login();
@@ -15,7 +18,10 @@ public class PlayFabLogin : MonoBehaviour
     {
         var request = new LoginWithCustomIDRequest{
             CustomId = SystemInfo.deviceUniqueIdentifier,
-            CreateAccount = true
+            CreateAccount = true,
+            InfoRequestParameters = new GetPlayerCombinedInfoRequestParams{
+                GetPlayerProfile = true
+            }
         };
         PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
     }
@@ -23,11 +29,34 @@ public class PlayFabLogin : MonoBehaviour
     void OnSuccess(LoginResult result)
     {
         Debug.Log("Login account: Success");
+        string name = null;
+        if(result.InfoResultPayload.PlayerProfile != null)
+        {
+            name = result.InfoResultPayload.PlayerProfile.DisplayName;
+        }
+        if(name == null)
+        {
+            firstStartUI.SetActive(true);
+        }
     }
 
     void OnError(PlayFabError error)
     {
         Debug.Log("Login account: Error");
         Debug.Log(error.GenerateErrorReport());
+    }
+
+    public void Submit()
+    {
+        var request = new UpdateUserTitleDisplayNameRequest{
+            DisplayName = firstStartUI.GetComponentInChildren<InputField>().text
+        };
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnError);
+    }
+
+    void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result)
+    {
+        Debug.Log("Display Name Update");
+        firstStartUI.SetActive(false);
     }
 }

@@ -5,9 +5,10 @@ using UnityEngine;
 public class GameOverRespawn : MonoBehaviour
 {
     public GameObject respawnUI;
-  
+
     private void OnCollisionEnter(Collision other) 
-    {
+    {   
+        //if
         RespawnMenu();
         Destroy(this.gameObject);
     }

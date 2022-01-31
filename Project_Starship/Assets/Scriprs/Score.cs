@@ -13,6 +13,11 @@ public class Score : MonoBehaviour
         GameObject scoreGO = this.gameObject;
         ScoreText = scoreGO.GetComponent<Text>();
         ScoreText.text = "0";
+        StartScore();
+    }
+
+    public void StartScore()
+    {
         InvokeRepeating("UpdateScore", 0.5f, 0.5f);
     }
 

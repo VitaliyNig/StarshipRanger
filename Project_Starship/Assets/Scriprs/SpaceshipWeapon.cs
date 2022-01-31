@@ -16,6 +16,14 @@ public class SpaceshipWeapon : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         if(scene.name == "DevScene")
         {
+            if(PlayerPrefs.HasKey("Rate"))
+            {
+                rate = PlayerPrefs.GetFloat("Rate");
+            }
+            else
+            {
+                PlayerPrefs.SetFloat("Rate", rate);
+            }
             InvokeRepeating("SpawnBullet", rate, rate);
         }
     }

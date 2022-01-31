@@ -113,7 +113,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8026098602462558415, guid: 07dd484abba257b4ba6a1e62a6f2df7a,
     type: 3}
   spaceshipPrefab: {fileID: 2058328491886976491}
-  rate: 0.25
+  rate: 0.5
   spawnPosZ: 7
   bulletSpeed: 30
 --- !u!64 &7150066526587088029
@@ -144,3 +144,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnUI: {fileID: 1697734238249392314, guid: 299e518cbc6e9e24e941fae252844d44,
     type: 3}
+  healthMax: 1
+  healthCount: 1

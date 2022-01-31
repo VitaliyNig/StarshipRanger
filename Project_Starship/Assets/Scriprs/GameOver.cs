@@ -7,17 +7,22 @@ public class GameOver : MonoBehaviour
 {
     public GameObject gameOverUI;
     public float TimeIsVisible;
+    public bool buttonClick;
 
     void Start()
     {
+        buttonClick = false;
         StartCoroutine(RespawnTimer());
     }
 
     IEnumerator RespawnTimer()
     {
         yield return new WaitForSeconds(TimeIsVisible);
-        GameOverMenu();
-        Destroy(this.gameObject);
+        if(buttonClick == false)
+        {
+            GameOverMenu();
+            Destroy(this.gameObject);
+        }
     }
 
     void GameOverMenu()
