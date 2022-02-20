@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ProgressBar : MonoBehaviour
 {
-    public GameOver GameOver;
+    public GameOverUI gameOverUI;
     public GameObject progressBar;
     public float updateProgress;
     Vector3 speedProgress;
 
     void Start()
     {
-        float time = GameOver.TimeIsVisible;
+        float time = gameOverUI.TimeIsVisible;
         speedProgress.x = 1 / (time / updateProgress);
         InvokeRepeating("ProgressUpdate", updateProgress, updateProgress);
     }

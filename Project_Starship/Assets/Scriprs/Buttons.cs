@@ -7,7 +7,7 @@ public class Buttons : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("DevScene");
+        SceneManager.LoadScene("Game");
     }
 
     public void GameLeaderboard()
@@ -33,7 +33,8 @@ public class Buttons : MonoBehaviour
 
     public void HangarLeft()
     {
-        MenuSpaceship menuSpaceship = GameObject.Find("Main Camera").GetComponent<MenuSpaceship>();
+        GameObject mainCamera = GameObject.Find("Main Camera");
+        MenuSpaceship menuSpaceship = mainCamera.GetComponent<MenuSpaceship>();
         int count = menuSpaceship.spaceshipPrefab.Count - 1;
         int id = menuSpaceship.spaceshipId;
         if(id == 0)
@@ -45,11 +46,13 @@ public class Buttons : MonoBehaviour
             menuSpaceship.spaceshipId = id - 1;
         }
         menuSpaceship.Reload();
+        HangarCheck(mainCamera);
     }
 
     public void HangarRight()
     {
-        MenuSpaceship menuSpaceship = GameObject.Find("Main Camera").GetComponent<MenuSpaceship>();
+        GameObject mainCamera = GameObject.Find("Main Camera");
+        MenuSpaceship menuSpaceship = mainCamera.GetComponent<MenuSpaceship>();
         int count = menuSpaceship.spaceshipPrefab.Count - 1;
         int id = menuSpaceship.spaceshipId;
         if(id == count)
@@ -61,11 +64,24 @@ public class Buttons : MonoBehaviour
             menuSpaceship.spaceshipId = id + 1;
         }
         menuSpaceship.Reload();
+        HangarCheck(mainCamera);
     }
 
     public void HangarSelect()
     {
-        MenuSpaceship menuSpaceship = GameObject.Find("Main Camera").GetComponent<MenuSpaceship>();
+        GameObject mainCamera = GameObject.Find("Main Camera");
+        MenuSpaceship menuSpaceship = mainCamera.GetComponent<MenuSpaceship>();
         PlayerPrefs.SetInt("SpaceshipId", menuSpaceship.spaceshipId);
+        HangarCheck(mainCamera);
+    }
+
+    void HangarCheck(GameObject mainCamera)
+    {
+        mainCamera.GetComponent<Hangar>().Check();
+    }
+
+    public void Shop()
+    {
+        SceneManager.LoadScene("Shop");
     }
 }

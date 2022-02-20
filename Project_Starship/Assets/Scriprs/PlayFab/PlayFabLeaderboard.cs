@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using PlayFab;
 using PlayFab.ClientModels;
 
@@ -12,7 +13,11 @@ public class PlayFabLeaderboard : MonoBehaviour
     
     void Start()
     {
-        GetLeaderboard();
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.name == "Leaderboard")
+        {
+            GetLeaderboard();
+        }
     }
 
     public void SetLeaderboard(int score)

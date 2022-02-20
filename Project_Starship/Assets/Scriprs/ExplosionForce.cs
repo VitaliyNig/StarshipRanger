@@ -8,7 +8,7 @@ public class ExplosionForce : MonoBehaviour
     void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
-        if(scene.name == "DevScene")
+        if(scene.name == "Game")
         {
             float speed = GameObject.Find("Main Camera").GetComponent<AsteroidSpawn>().asteroidSpeed;
             this.gameObject.GetComponent<Rigidbody>().AddForce(0f, 0f, -speed, ForceMode.Impulse);

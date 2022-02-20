@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Asteroid
+  - Crystal
+  - Starship
+  - Bullet
   layers:
   - Default
   - TransparentFX

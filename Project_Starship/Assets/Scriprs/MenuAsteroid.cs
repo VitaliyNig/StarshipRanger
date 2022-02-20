@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class MenuAsteroid : MonoBehaviour
 {
-    public List<GameObject> asteroidPrefab;
+    public AstreroidsLists AsteroidsPrefabs = new AstreroidsLists();
     float spawnPosX = 15f;
+    
+    [System.Serializable]
+    public class AsteroidList
+    {
+        public List<GameObject> asteroidPrefab;
+    }
+ 
+    [System.Serializable]
+    public class AstreroidsLists
+    {
+        public List<AsteroidList> asteroidsLists;
+    }
     
     void Start()
     {
@@ -23,7 +35,8 @@ public class MenuAsteroid : MonoBehaviour
 
     void SpawnAsteroid(Vector3 asteroidPos)
     {
-        GameObject asteroidGO = Instantiate<GameObject>(asteroidPrefab[Random.Range(0, asteroidPrefab.Count)]);
+        int numberList = Random.Range(0, AsteroidsPrefabs.asteroidsLists.Count);
+        GameObject asteroidGO = Instantiate<GameObject>(AsteroidsPrefabs.asteroidsLists[numberList].asteroidPrefab[Random.Range(0, AsteroidsPrefabs.asteroidsLists[numberList].asteroidPrefab.Count)]);
         asteroidGO.transform.position = asteroidPos;
         asteroidGO.transform.Rotate(float.Parse(Random.Range(0, 360).ToString()), float.Parse(Random.Range(0, 360).ToString()), float.Parse(Random.Range(0, 360).ToString()), Space.Self);
         asteroidGO.GetComponent<Rigidbody>().AddForce(-2f, 0f, 0f, ForceMode.Impulse);
