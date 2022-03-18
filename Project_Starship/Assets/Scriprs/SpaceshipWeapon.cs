@@ -15,11 +15,7 @@ public class SpaceshipWeapon : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         if(scene.name == "Game")
         {
-            if(!PlayerPrefs.HasKey("FireRate"))
-            {
-                PlayerPrefs.SetFloat("FireRate", 0.5f);
-            }
-            float rate = PlayerPrefs.GetFloat("FireRate");
+            float rate = 0.5f - (PlayerPrefs.GetInt("FireRate") * 0.05f);
             InvokeRepeating("SpawnBullet", rate, rate);
         }
     }

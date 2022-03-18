@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AdaptiveUI : MonoBehaviour
 {
@@ -9,14 +10,22 @@ public class AdaptiveUI : MonoBehaviour
     public GameObject countScore;
     public GameObject countMoney;
     public GameObject countHealth;
+    public GameObject scrollArea;
+    public GameObject buttonBack;
+    Scene scene;
+    
     void Awake() 
     {
-        if(Screen.safeArea.height != Screen.height)
+        scene = SceneManager.GetActiveScene();
+        if(scene.name == "Game")
         {
-            titles.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -50, 0);
-            countScore.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -75, 0);
-            countMoney.GetComponent<RectTransform>().anchoredPosition = new Vector3(-250, -25, 0);
-            countHealth.GetComponent<RectTransform>().anchoredPosition = new Vector3(250, -25, 0);
+            if(Screen.safeArea.height != Screen.height)
+            {
+                titles.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -50, 0);
+                countScore.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -75, 0);
+                countMoney.GetComponent<RectTransform>().anchoredPosition = new Vector3(-250, -25, 0);
+                countHealth.GetComponent<RectTransform>().anchoredPosition = new Vector3(250, -25, 0);
+            }
         }
     }
 }

@@ -7,36 +7,32 @@ using UnityEngine.SceneManagement;
 public class Money : MonoBehaviour
 {
     public int countMoney;
-    int countGetMoney;
+    int money;
     Text moneyUI;
     Scene scene;
     
     void Start()
     {
-        if(!PlayerPrefs.HasKey("Money"))
-        {
-            PlayerPrefs.SetInt("Money", 0);
-        }
-        countGetMoney = PlayerPrefs.GetInt("Money");
         moneyUI = this.gameObject.GetComponent<Text>();
-        moneyUI.text = countGetMoney.ToString();
         scene = SceneManager.GetActiveScene();
+        UpdateMoney();
     }
 
-    void Update()
+    public void UpdateMoney()
     {
+        money = PlayerPrefs.GetInt("Money");
         if(scene.name == "Shop")
         {
-            moneyUI.text = countGetMoney.ToString();
+            moneyUI.text = money.ToString();
         }
         else if(scene.name == "Game")
         {
-            moneyUI.text = countGetMoney + "+" + countMoney;
+            moneyUI.text = money.ToString() + "+" + countMoney;
         }
     }
 
     public void SaveMoney()
     {
-        PlayerPrefs.SetInt("Money", countGetMoney + countMoney);
+        PlayerPrefs.SetInt("Money", money + countMoney);
     }
 }

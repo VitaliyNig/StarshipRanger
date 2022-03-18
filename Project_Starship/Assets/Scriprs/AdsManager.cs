@@ -32,8 +32,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     {
         if(placementId == "Rewarded_Android" && showResult == ShowResult.Finished)
         {
+            this.gameObject.GetComponent<Respawn>().ButtonAd();
             Debug.Log("Rewarded ad finished");
-            this.gameObject.GetComponent<Respawn>().Continue();
         }
     }
 

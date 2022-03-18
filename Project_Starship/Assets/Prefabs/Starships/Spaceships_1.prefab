@@ -9750,7 +9750,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8026098602462558415, guid: 07dd484abba257b4ba6a1e62a6f2df7a,
     type: 3}
   spaceshipPrefab: {fileID: 6885053523598291022}
-  rate: 0.5
   spawnPosZ: 7
   bulletSpeed: 30
 --- !u!64 &1565903821261196624
@@ -9779,8 +9778,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6aef11160eee8d47b16cd79bf65c0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnUI: {fileID: 1697734238249392314, guid: 299e518cbc6e9e24e941fae252844d44,
-    type: 3}
   explosionParticlePrefab: {fileID: 3999566358263821367}
 --- !u!1001 &3784590639396017878
 PrefabInstance:

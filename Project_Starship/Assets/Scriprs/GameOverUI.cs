@@ -45,16 +45,9 @@ public class GameOverUI : MonoBehaviour
     {
         gameOverUI.SetActive(true);
         int score = int.Parse(countScoreUI.GetComponent<Text>().text);
-        if(PlayerPrefs.HasKey("BestScore"))
+        if(PlayerPrefs.GetInt("BestScore") < score)
         {
-            if(PlayerPrefs.GetInt("BestScore") < score)
-            {
-                this.gameObject.GetComponent<PlayFabLeaderboard>().SetLeaderboard(score);
-                PlayerPrefs.SetInt("BestScore", score);
-            }
-        }
-        else
-        {
+            this.gameObject.GetComponent<PlayFabLeaderboard>().SetLeaderboard(score);
             PlayerPrefs.SetInt("BestScore", score);
         }
         countMoneyUI.GetComponent<Money>().SaveMoney();

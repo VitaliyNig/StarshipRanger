@@ -12,10 +12,6 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        if(!PlayerPrefs.HasKey("Health"))
-        {
-            PlayerPrefs.SetInt("Health", 1);
-        }
         ColorUtility.TryParseHtmlString("#FFB958", out colorHealth);
         ColorUtility.TryParseHtmlString("#282828", out colorDeath);
         SetHealth();

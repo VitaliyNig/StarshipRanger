@@ -1,14 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Respawn : MonoBehaviour
 {
+    public int countMoneyRespawn;
+    public Button buttonMoney;
     public GameObject countScoreUI;
     public GameObject countHealthUI;
     public GameObject mainCamera;
+    int money;
 
-    public void Continue()
+    void Start()
+    {
+        money = PlayerPrefs.GetInt("Money");
+        if(money < countMoneyRespawn)
+        {
+            buttonMoney.interactable = false;
+        }
+    }
+
+    public void ButtonMoney()
+    {
+        PlayerPrefs.SetInt("Money", (money - countMoneyRespawn));
+        GameObject.Find("CountMoney").GetComponent<Money>().UpdateMoney();
+        Continue();
+    }
+
+    public void ButtonAd()
+    {
+        Continue();
+    }
+
+    void Continue()
     {
         //Stop game over script
         this.gameObject.GetComponent<GameOverUI>().buttonClick = true;

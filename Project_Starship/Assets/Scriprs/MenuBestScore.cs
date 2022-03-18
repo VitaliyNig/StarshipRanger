@@ -11,14 +11,7 @@ public class MenuBestScore : MonoBehaviour
     void Start()
     {
         Text scoreText = this.gameObject.GetComponent<Text>();
-        if(PlayerPrefs.HasKey("BestScore"))
-        {
-            score = PlayerPrefs.GetInt("BestScore");
-        }
-        else
-        {
-            PlayerPrefs.SetInt("BestScore", 0);
-        }
+        score = PlayerPrefs.GetInt("BestScore");
         scoreText.text = "Best Score: " + score;
     }
 }

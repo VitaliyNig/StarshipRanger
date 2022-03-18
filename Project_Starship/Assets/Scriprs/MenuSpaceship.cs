@@ -12,14 +12,7 @@ public class MenuSpaceship : MonoBehaviour
 
     void Start()
     {
-        if(PlayerPrefs.HasKey("SpaceshipId"))
-        {
-            spaceshipId = PlayerPrefs.GetInt("SpaceshipId");
-        }
-        else
-        {
-            PlayerPrefs.SetInt("SpaceshipId", 2);
-        }
+        spaceshipId = PlayerPrefs.GetInt("SpaceshipId");
         Reload();
     }
 
