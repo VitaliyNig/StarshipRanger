@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SpaceshipMove : MonoBehaviour
-{   
+{
     public Vector3 lastPos;
     bool screenStatusGame = false;
     bool screenStatusHangar = false;
@@ -13,12 +13,12 @@ public class SpaceshipMove : MonoBehaviour
     void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
-        if(scene.name == "Game")
+        if (scene.name == "Game")
         {
             screenStatusGame = true;
             lastPos = this.transform.position;
         }
-        else if(scene.name == "Hangar")
+        else if (scene.name == "Hangar")
         {
             screenStatusHangar = true;
         }
@@ -26,9 +26,9 @@ public class SpaceshipMove : MonoBehaviour
 
     void Update()
     {
-        if(screenStatusGame == true)
+        if (screenStatusGame == true)
         {
-            foreach(Touch touch in Input.touches)
+            foreach (Touch touch in Input.touches)
             {
                 if (touch.phase == TouchPhase.Moved)
                 {
@@ -40,11 +40,11 @@ public class SpaceshipMove : MonoBehaviour
                     spaceshipPos.x = touchPos3D.x;
                     this.transform.position = spaceshipPos;
 
-                    if(lastPos.x > this.transform.position.x)
+                    if (lastPos.x > this.transform.position.x)
                     {
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 30f), 3f);
                     }
-                    else if(lastPos.x < this.transform.position.x)
+                    else if (lastPos.x < this.transform.position.x)
                     {
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -30f), 3f);
                     }
@@ -53,22 +53,22 @@ public class SpaceshipMove : MonoBehaviour
                 }
             }
 
-            if(lastPos.x == this.transform.position.x)
+            if (lastPos.x == this.transform.position.x)
             {
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0f), 0.3f);
             }
         }
-        else if(screenStatusHangar == true)
+        else if (screenStatusHangar == true)
         {
-            if(Input.touchCount == 1)
+            if(Input.touchCount > 0)
             {
-                float rotateSpeed = 0.05f;
+                float rotateSpeed = 0.1f;
                 Touch touchZero = Input.GetTouch(0);
-    
-                Vector3 localAngle = this.transform.localEulerAngles;
-                localAngle.y -= rotateSpeed * touchZero.deltaPosition.x;
-                localAngle.x -= rotateSpeed * touchZero.deltaPosition.y;
-                this.transform.localEulerAngles = localAngle;
+                
+                if(touchZero.phase == TouchPhase.Moved)
+                {
+                    this.transform.Rotate(-(rotateSpeed * touchZero.deltaPosition.y), -(rotateSpeed * touchZero.deltaPosition.x), 0f);
+                }       
             }
         }
     }

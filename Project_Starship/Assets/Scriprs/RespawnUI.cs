@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class RespawnUI : MonoBehaviour
 {
-    public ParticleSystem explosionParticlePrefab;
+    public GameObject explosionParticlePrefab;
     Health health;
 
     void Start()
@@ -25,7 +25,10 @@ public class RespawnUI : MonoBehaviour
         if(health.countHealth == 0)
         {
             RespawnMenu();
-            ParticleSystem.Instantiate(explosionParticlePrefab, this.transform.position, Quaternion.identity).Play();
+            ParticleSystem explosionParticle = explosionParticlePrefab.GetComponentInChildren<ParticleSystem>();
+            ParticleSystem ps = ParticleSystem.Instantiate(explosionParticle, this.transform.position, Quaternion.identity);
+            ps.Play();
+            ps.GetComponent<AudioSource>().Play();
             Destroy(this.gameObject);
         }
     }

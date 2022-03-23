@@ -11,7 +11,8 @@ public class ExplosionForce : MonoBehaviour
         if(scene.name == "Game")
         {
             float speed = GameObject.Find("Main Camera").GetComponent<AsteroidSpawn>().asteroidSpeed;
-            this.gameObject.GetComponent<Rigidbody>().AddForce(0f, 0f, -speed, ForceMode.Impulse);
+            GameObject thisGO = this.gameObject;
+            thisGO.GetComponent<Rigidbody>().AddForce(0f, 0f, -speed, ForceMode.Impulse);
         }
     }
 }

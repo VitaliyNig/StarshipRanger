@@ -9,7 +9,13 @@ public class EngineStart : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "Game")
         {
-            this.gameObject.GetComponent<ParticleSystem>().Play();
+            GameObject thisGO = this.gameObject;
+            thisGO.GetComponent<AudioSource>().Play();
+            ParticleSystem[] particleSystems = thisGO.GetComponentsInChildren<ParticleSystem>();
+            foreach(var ps in particleSystems)
+            {
+                ps.Play();
+            }
         }
     }
 }

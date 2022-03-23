@@ -113,6 +113,11 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadScene("Settings");
     }
 
+    public void SettingsDev()
+    {
+        SceneManager.LoadScene("SettingsDev");
+    }
+
     public void PlayerPrefsRemove()
     {
         PlayerPrefs.SetInt("Health", 1);

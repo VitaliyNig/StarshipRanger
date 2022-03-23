@@ -8,6 +8,7 @@ TagManager:
   - Crystal
   - Starship
   - Bullet
+  - Audio
   layers:
   - Default
   - TransparentFX

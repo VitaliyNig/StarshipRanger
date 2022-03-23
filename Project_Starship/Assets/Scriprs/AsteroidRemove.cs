@@ -17,17 +17,17 @@ public class AsteroidRemove : MonoBehaviour
             {
                 if(thisGO.tag == "Crystal")
                 {
-                    GameObject.Find("CountMoney").GetComponent<Money>().countMoney++;
+                    Money money = GameObject.Find("CountMoney").GetComponent<Money>();
+                    money.countMoney++;
+                    money.UpdateMoney();
                 }
-                ParticleSystem.Instantiate(explosionParticlePrefab, thisGO.transform.position, Quaternion.identity).Play();
-                Destroy(thisGO);
+                AsteroidDestroy(thisGO);
             }
             else if(colliderTag == "Starship")
             {
                 if(GameObject.Find("CountHealth").GetComponent<Health>().countHealth > 1)
                 {
-                    ParticleSystem.Instantiate(explosionParticlePrefab, thisGO.transform.position, Quaternion.identity).Play();
-                    Destroy(thisGO);
+                    AsteroidDestroy(thisGO);
                 }
             }
             else
@@ -35,5 +35,13 @@ public class AsteroidRemove : MonoBehaviour
                 Destroy(thisGO);
             }
         }
+    }
+
+    void AsteroidDestroy(GameObject thisGO)
+    {
+        ParticleSystem ps = ParticleSystem.Instantiate(explosionParticlePrefab, thisGO.transform.position, Quaternion.identity);
+        ps.Play();
+        ps.GetComponent<AudioSource>().Play();
+        Destroy(thisGO);
     }
 }

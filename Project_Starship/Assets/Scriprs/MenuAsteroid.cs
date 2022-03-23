@@ -5,7 +5,8 @@ using UnityEngine;
 public class MenuAsteroid : MonoBehaviour
 {
     public AstreroidsLists AsteroidsPrefabs = new AstreroidsLists();
-    float spawnPosX = 15f;
+    public int countAsteroid;
+    public float spawnPosX;
     
     [System.Serializable]
     public class AsteroidList
@@ -21,7 +22,7 @@ public class MenuAsteroid : MonoBehaviour
     
     void Start()
     {
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < countAsteroid; i++)
         {
             SpawnAsteroid(new Vector3(Random.Range(-spawnPosX, spawnPosX), Random.Range(-15f, 15f), Random.Range(20f, 40f)));
         }
@@ -30,7 +31,7 @@ public class MenuAsteroid : MonoBehaviour
 
     void AsteroidPos()
     {
-        SpawnAsteroid(new Vector3(spawnPosX + 5f, Random.Range(-15f, 15f), Random.Range(20f, 40f)));
+        SpawnAsteroid(new Vector3(20f, Random.Range(-15f, 15f), Random.Range(20f, 40f)));
     }
 
     void SpawnAsteroid(Vector3 asteroidPos)

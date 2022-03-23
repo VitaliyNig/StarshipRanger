@@ -31,6 +31,14 @@ public class PlayerPrefsSettings : MonoBehaviour
         {
             PlayerPrefs.SetInt("Money", 0);
         }
+        if(!PlayerPrefs.HasKey("MusicVolume"))
+        {
+            PlayerPrefs.SetInt("MusicVolume", 10);
+        }
+        if(!PlayerPrefs.HasKey("SFXVolume"))
+        {
+            PlayerPrefs.SetInt("SFXVolume", 10);
+        }
 
         ShopItems shopItems = new ShopItems();
         foreach(var i in shopItems.starshipsList)

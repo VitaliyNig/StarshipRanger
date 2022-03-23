@@ -15,6 +15,7 @@ public class Respawn : MonoBehaviour
     void Start()
     {
         money = PlayerPrefs.GetInt("Money");
+        buttonMoney.GetComponentInChildren<Text>().text = "Use " + countMoneyRespawn.ToString() + "M";
         if(money < countMoneyRespawn)
         {
             buttonMoney.interactable = false;
@@ -38,10 +39,15 @@ public class Respawn : MonoBehaviour
         //Stop game over script
         this.gameObject.GetComponent<GameOverUI>().buttonClick = true;
         //Delete all asteroid
-        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Asteroid");
-        foreach(var g in gameObjects)
+        GameObject[] asteroidObjects = GameObject.FindGameObjectsWithTag("Asteroid");
+        foreach(var a in asteroidObjects)
         {
-            Destroy(g);
+            Destroy(a);
+        }
+        GameObject[] crystalObjects = GameObject.FindGameObjectsWithTag("Crystal");
+        foreach(var c in crystalObjects)
+        {
+            Destroy(c);
         }
         //Close UI
         this.gameObject.SetActive(false);
