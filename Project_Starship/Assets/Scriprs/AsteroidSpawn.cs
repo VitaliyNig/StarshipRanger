@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class AsteroidSpawn : MonoBehaviour
 {
-    public AstreroidsLists AsteroidsPrefabs = new AstreroidsLists();
+    public AstreroidsLists asteroidsPrefabs = new AstreroidsLists();
     public float spawnRate;
     public float asteroidSpeed;
-    public Vector3 screenSize;
     public int score;
     public float asteroidCount;
+    private Vector3 screenSize;
 
     [System.Serializable]
     public class AsteroidList
@@ -24,7 +24,7 @@ public class AsteroidSpawn : MonoBehaviour
         public List<AsteroidList> asteroidsLists;
     }
 
-    void Start()
+    private void Start()
     {
         screenSize = Camera.main.ViewportToWorldPoint(new Vector2(1f, 1f));
         Debug.Log(screenSize);
@@ -42,10 +42,10 @@ public class AsteroidSpawn : MonoBehaviour
         StartCoroutine(SpawnTimer());
     }
 
-    void SpawnAsteroid()
+    private void SpawnAsteroid()
     {
-        int numberList = Random.Range(0, AsteroidsPrefabs.asteroidsLists.Count);
-        GameObject asteroidGO = Instantiate<GameObject>(AsteroidsPrefabs.asteroidsLists[numberList].asteroidPrefab[Random.Range(0, AsteroidsPrefabs.asteroidsLists[numberList].asteroidPrefab.Count)]);
+        int numberList = Random.Range(0, asteroidsPrefabs.asteroidsLists.Count);
+        GameObject asteroidGO = Instantiate<GameObject>(asteroidsPrefabs.asteroidsLists[numberList].asteroidPrefab[Random.Range(0, asteroidsPrefabs.asteroidsLists[numberList].asteroidPrefab.Count)]);
         Vector3 asteroidPos = Vector3.zero;
         asteroidPos.x = Random.Range(-screenSize.x, screenSize.x);
         asteroidPos.z = screenSize.z + Random.Range(3f, 7f);
@@ -55,7 +55,7 @@ public class AsteroidSpawn : MonoBehaviour
         asteroidGO.GetComponent<Rigidbody>().AddForce(0f, 0f, -asteroidSpeed, ForceMode.Impulse);
     }
 
-    void Difficulty()
+    private void Difficulty()
     {
         GameObject countScore = GameObject.Find("CountScore");
         if(countScore.GetComponent<Score>().GameIsActive == true)

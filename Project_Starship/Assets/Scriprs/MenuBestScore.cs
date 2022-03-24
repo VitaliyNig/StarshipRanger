@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuBestScore : MonoBehaviour
 {
-    int score = 0;
+    private int score = 0;
 
-    void Start()
+    private void Start()
     {
         Text scoreText = this.gameObject.GetComponent<Text>();
         score = PlayerPrefs.GetInt("BestScore");

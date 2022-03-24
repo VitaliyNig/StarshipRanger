@@ -4,42 +4,47 @@ using UnityEngine;
 
 public class AsteroidRemove : MonoBehaviour
 {
-    public ParticleSystem explosionParticlePrefab;
-    bool checkRetry = false;
+    public GameObject explosionParticlePrefab;
+    private bool checkOneTry = false;
 
     private void OnCollisionEnter(Collision other) {
-        if(checkRetry == false)
+        if(checkOneTry == false)
         {
-            checkRetry = true;
             GameObject thisGO = this.gameObject;
             string colliderTag = other.collider.tag;
-            if(colliderTag == "Bullet")
+            List<string> listTags = new List<string> {"Bullet" , "Starship", "AsteroidTrigger"};
+            if(listTags.Contains(colliderTag))
             {
-                if(thisGO.tag == "Crystal")
+                checkOneTry = true;
+                switch (colliderTag)
                 {
-                    Money money = GameObject.Find("CountMoney").GetComponent<Money>();
-                    money.countMoney++;
-                    money.UpdateMoney();
+                    case "Bullet":
+                        if(thisGO.tag == "Crystal")
+                        {
+                            Money money = GameObject.Find("CountMoney").GetComponent<Money>();
+                            money.countMoney++;
+                            money.UpdateMoney();
+                        }
+                        AsteroidDestroy(thisGO);
+                        break;
+                    case "Starship":
+                        if(GameObject.Find("CountHealth").GetComponent<Health>().countHealth > 1)
+                        {
+                            AsteroidDestroy(thisGO);
+                        }
+                        break;
+                    case "AsteroidTrigger":
+                        Destroy(thisGO);
+                        break;
                 }
-                AsteroidDestroy(thisGO);
-            }
-            else if(colliderTag == "Starship")
-            {
-                if(GameObject.Find("CountHealth").GetComponent<Health>().countHealth > 1)
-                {
-                    AsteroidDestroy(thisGO);
-                }
-            }
-            else
-            {
-                Destroy(thisGO);
             }
         }
     }
 
-    void AsteroidDestroy(GameObject thisGO)
+    private void AsteroidDestroy(GameObject thisGO)
     {
-        ParticleSystem ps = ParticleSystem.Instantiate(explosionParticlePrefab, thisGO.transform.position, Quaternion.identity);
+        ParticleSystem explosionParticle = explosionParticlePrefab.GetComponentInChildren<ParticleSystem>();
+        ParticleSystem ps = ParticleSystem.Instantiate(explosionParticle, thisGO.transform.position, Quaternion.identity);
         ps.Play();
         ps.GetComponent<AudioSource>().Play();
         Destroy(thisGO);

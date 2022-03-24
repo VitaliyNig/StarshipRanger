@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EngineStart : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
         if(SceneManager.GetActiveScene().name == "Game")
         {

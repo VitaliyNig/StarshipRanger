@@ -12,7 +12,7 @@ public class VolumeSlider : MonoBehaviour
     public Text musicText;
     public Text sfxText;
     
-    void Start()
+    private void Start()
     {
         musicSlider.value = PlayerPrefs.GetInt("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetInt("SFXVolume");

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class AdaptiveUI : MonoBehaviour
+public class FixSafeArea : MonoBehaviour
 {
     public GameObject titles;
     public GameObject countScore;
@@ -12,9 +12,9 @@ public class AdaptiveUI : MonoBehaviour
     public GameObject countHealth;
     public GameObject scrollArea;
     public GameObject buttonBack;
-    Scene scene;
+    private Scene scene;
     
-    void Awake() 
+    private void Awake() 
     {
         scene = SceneManager.GetActiveScene();
         if(scene.name == "Game")

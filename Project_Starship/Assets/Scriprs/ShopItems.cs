@@ -42,13 +42,13 @@ public class ShopItems : MonoBehaviour
         new Starships{ StarshipsID = 5, Count = 300, Status = false}
     };
 
-    void Start()
+    private void Start()
     {
         UpgradesList();
         StarshipsList();
     }
 
-    void UpgradesList()
+    private void UpgradesList()
     {
         foreach(var u in upgradesList)
         {
@@ -73,7 +73,7 @@ public class ShopItems : MonoBehaviour
         }
     }
 
-    void StarshipsList()
+    private void StarshipsList()
     {
         foreach(var s in starshipsList)
         {

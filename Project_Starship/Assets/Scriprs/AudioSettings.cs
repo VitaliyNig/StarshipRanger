@@ -7,7 +7,7 @@ public class AudioSettings : MonoBehaviour
 {
     public AudioMixer audioMixer;
 
-    void Start()
+    private void Start()
     {
         float valueMusic = PlayerPrefs.GetInt("MusicVolume");
         float valueSFX = PlayerPrefs.GetInt("SFXVolume");

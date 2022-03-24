@@ -8,40 +8,40 @@ public class GameOverUI : MonoBehaviour
     public GameObject gameOverUI;
     public GameObject countScoreUI;
     public GameObject countMoneyUI;
-    public float TimeIsVisible;
+    public float timeIsVisible;
     public bool buttonClick;
-    bool firstTry = true;
+    private bool checkOneTry = true;
 
     public void StartScript()
     {
         buttonClick = false;
-        if(firstTry == false)
+        if(checkOneTry == false)
         {
             GameOverMenu();
         }
         else
         {
-            firstTry = false;
+            checkOneTry = false;
             StartCoroutine(RespawnTimer());
         }
     }
 
     IEnumerator RespawnTimer()
     {
-        yield return new WaitForSeconds(TimeIsVisible);
+        yield return new WaitForSeconds(timeIsVisible);
         if(buttonClick == false)
         {
             GameOverMenu();
         }
     }
 
-    void GameOverMenu()
+    private void GameOverMenu()
     {
         GameOverScript();
         this.gameObject.SetActive(false);
     }
 
-    void GameOverScript()
+    private void GameOverScript()
     {
         gameOverUI.SetActive(true);
         int score = int.Parse(countScoreUI.GetComponent<Text>().text);

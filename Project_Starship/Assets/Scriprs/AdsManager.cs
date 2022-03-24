@@ -5,7 +5,7 @@ using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour, IUnityAdsListener
 {
-    void Start()
+    private void Start()
     {
         Advertisement.Initialize("4585923");
         Advertisement.AddListener(this);
@@ -32,7 +32,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     {
         if(placementId == "Rewarded_Android" && showResult == ShowResult.Finished)
         {
-            this.gameObject.GetComponent<Respawn>().ButtonAd();
+            GameObject.Find("Respawn").GetComponent<Respawn>().ButtonAd();
             Debug.Log("Rewarded ad finished");
         }
     }

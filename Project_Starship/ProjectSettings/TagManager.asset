@@ -9,6 +9,7 @@ TagManager:
   - Starship
   - Bullet
   - Audio
+  - AsteroidTrigger
   layers:
   - Default
   - TransparentFX

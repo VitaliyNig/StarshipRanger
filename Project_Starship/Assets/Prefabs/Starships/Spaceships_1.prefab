@@ -9621,7 +9621,7 @@ GameObject:
   - component: {fileID: 4939432581747642779}
   - component: {fileID: -7414108416422140143}
   - component: {fileID: 5475279136829447220}
-  - component: {fileID: 1565903821261196624}
+  - component: {fileID: 4319787886056961772}
   - component: {fileID: -5622947418893537092}
   - component: {fileID: 1874778280959982917}
   - component: {fileID: 6657740384595810934}
@@ -9727,7 +9727,7 @@ MonoBehaviour:
   spaceshipPrefab: {fileID: 6885053523598291022}
   spawnPosZ: 7
   bulletSpeed: 30
---- !u!64 &1565903821261196624
+--- !u!64 &4319787886056961772
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9738,9 +9738,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -3273655591370349607, guid: 5c9d6f94af63a7a4490789d292619f0c, type: 3}
+  m_Mesh: {fileID: 7959959029572208088, guid: aee18d264c9f2774798080cbc8e4fc83, type: 3}
 --- !u!114 &-5622947418893537092
 MonoBehaviour:
   m_ObjectHideFlags: 0

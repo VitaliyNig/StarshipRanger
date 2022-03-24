@@ -10,7 +10,7 @@ public class SpaceshipWeapon : MonoBehaviour
     public float spawnPosZ = 0f;
     public float bulletSpeed = 0f;
 
-    void Start()
+    private void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
         if(scene.name == "Game")
@@ -20,7 +20,7 @@ public class SpaceshipWeapon : MonoBehaviour
         }
     }
 
-    void SpawnBullet()
+    private void SpawnBullet()
     {
         GameObject bulletGO = Instantiate<GameObject>(bulletPrefab);
         Vector3 bulletPos = Vector3.zero;

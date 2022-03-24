@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    Color colorHealth;
-    Color colorDeath;
-    Image[] images;
     public int countHealth;
+    private Color colorHealth;
+    private Color colorDeath;
+    private Image[] images;
 
-    void Start()
+    private void Start()
     {
         ColorUtility.TryParseHtmlString("#FFB958", out colorHealth);
         ColorUtility.TryParseHtmlString("#282828", out colorDeath);
         SetHealth();
     }
 
-    void SetHealth()
+    private void SetHealth()
     {
         images = this.GetComponentsInChildren<Image>();
         countHealth = PlayerPrefs.GetInt("Health");

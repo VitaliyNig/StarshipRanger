@@ -8,7 +8,7 @@ public class SpaceshipSpawn : MonoBehaviour
     public Vector3 screenSize;
     public float spawnPosY = 0f;
     
-    void Start()
+    private void Start()
     {
         Spawn();
     }

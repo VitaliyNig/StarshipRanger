@@ -7,13 +7,13 @@ public class HangarSpaceship : MonoBehaviour
 {
     public List<GameObject> spaceshipPrefab;
     public List<GameObject> spaceshipPrefabUnlock;
-    GameObject spaceshipGO;
     public int spaceshipId;
     public Vector3 spawnPos;
     public Vector3 spawnRotate;
     public Text buttonSelect;
+    private GameObject spaceshipGO;
 
-    void Start()
+    private void Start()
     {
         ShopItems shopItems = new ShopItems();
         foreach(var i in shopItems.starshipsList)

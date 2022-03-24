@@ -5,12 +5,12 @@ using UnityEngine;
 public class MenuSpaceship : MonoBehaviour
 {
     public List<GameObject> spaceshipPrefab;
-    GameObject spaceshipGO;
     public int spaceshipId = 2;
     public Vector3 spawnPos;
     public Vector3 spawnRotate;
+    private GameObject spaceshipGO;
 
-    void Start()
+    private void Start()
     {
         spaceshipId = PlayerPrefs.GetInt("SpaceshipId");
         Reload();

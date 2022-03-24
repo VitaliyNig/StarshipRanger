@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 public class Money : MonoBehaviour
 {
     public int countMoney;
-    int money;
-    Text moneyUI;
-    Scene scene;
+    private int money;
+    private Text moneyUI;
+    private Scene scene;
     
-    void Start()
+    private void Start()
     {
         moneyUI = this.gameObject.GetComponent<Text>();
         scene = SceneManager.GetActiveScene();

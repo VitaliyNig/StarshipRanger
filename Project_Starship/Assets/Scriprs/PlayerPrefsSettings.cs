@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerPrefsSettings : MonoBehaviour
 {
-    void Start()
+    private void Awake()
     {
         Settings();
     }

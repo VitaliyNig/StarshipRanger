@@ -10,9 +10,9 @@ public class Respawn : MonoBehaviour
     public GameObject countScoreUI;
     public GameObject countHealthUI;
     public GameObject mainCamera;
-    int money;
+    private int money;
 
-    void Start()
+    private void Start()
     {
         money = PlayerPrefs.GetInt("Money");
         buttonMoney.GetComponentInChildren<Text>().text = "Use " + countMoneyRespawn.ToString() + "M";
@@ -34,7 +34,7 @@ public class Respawn : MonoBehaviour
         Continue();
     }
 
-    void Continue()
+    private void Continue()
     {
         //Stop game over script
         this.gameObject.GetComponent<GameOverUI>().buttonClick = true;

@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    Text ScoreText;
     public bool GameIsActive = true;
+    private Text ScoreText;
 
-    void Start()
+    private void Start()
     {
         GameObject scoreGO = this.gameObject;
         ScoreText = scoreGO.GetComponent<Text>();
@@ -21,7 +21,7 @@ public class Score : MonoBehaviour
         InvokeRepeating("UpdateScore", 0.5f, 0.5f);
     }
 
-    void UpdateScore()
+    private void UpdateScore()
     {
         if(GameIsActive == true)
         {

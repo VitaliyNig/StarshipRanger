@@ -6,9 +6,9 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     public List<AudioClip> audioList;
-    AudioSource audio;
-    int index;
-    int random;
+    private AudioSource audio;
+    private int index;
+    private int random;
 
     private void Awake()
     {

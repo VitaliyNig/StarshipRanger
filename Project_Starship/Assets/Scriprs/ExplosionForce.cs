@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ExplosionForce : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
         if(scene.name == "Game")

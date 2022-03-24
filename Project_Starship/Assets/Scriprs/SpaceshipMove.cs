@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 public class SpaceshipMove : MonoBehaviour
 {
     public Vector3 lastPos;
-    bool screenStatusGame = false;
-    bool screenStatusHangar = false;
+    private bool screenStatusGame = false;
+    private bool screenStatusHangar = false;
 
-    void Start()
+    private void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "Game")
@@ -24,7 +24,7 @@ public class SpaceshipMove : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (screenStatusGame == true)
         {

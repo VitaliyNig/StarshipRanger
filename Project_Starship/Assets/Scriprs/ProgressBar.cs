@@ -7,16 +7,16 @@ public class ProgressBar : MonoBehaviour
     public GameOverUI gameOverUI;
     public GameObject progressBar;
     public float updateProgress;
-    Vector3 speedProgress;
+    private Vector3 speedProgress;
 
-    void Start()
+    private void Start()
     {
-        float time = gameOverUI.TimeIsVisible;
+        float time = gameOverUI.timeIsVisible;
         speedProgress.x = 1 / (time / updateProgress);
         InvokeRepeating("ProgressUpdate", updateProgress, updateProgress);
     }
 
-    void ProgressUpdate()
+    private void ProgressUpdate()
     {
         progressBar.transform.localScale -= speedProgress;
     }
