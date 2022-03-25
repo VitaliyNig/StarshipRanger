@@ -7,41 +7,43 @@ using PlayFab;
 using PlayFab.ClientModels;
 
 public class PlayFabLogin : MonoBehaviour
-{ 
+{
     public GameObject firstStartUI;
-    
-    void Start()
+
+    private void Start()
     {
         Login();
     }
 
-    void Login()
+    private void Login()
     {
-        var request = new LoginWithCustomIDRequest{
+        var request = new LoginWithCustomIDRequest
+        {
             CustomId = SystemInfo.deviceUniqueIdentifier,
             CreateAccount = true,
-            InfoRequestParameters = new GetPlayerCombinedInfoRequestParams{
+            InfoRequestParameters = new GetPlayerCombinedInfoRequestParams
+            {
                 GetPlayerProfile = true
             }
         };
         PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
     }
 
-    void OnSuccess(LoginResult result)
+    private void OnSuccess(LoginResult result)
     {
         Debug.Log("Login account: Success");
         string name = null;
-        if(result.InfoResultPayload.PlayerProfile != null)
+        if (result.InfoResultPayload.PlayerProfile != null)
         {
             name = result.InfoResultPayload.PlayerProfile.DisplayName;
         }
-        if(name == null)
+        if (name == null)
         {
             firstStartUI.SetActive(true);
         }
     }
 
-    void OnError(PlayFabError error)
+    private void OnError(PlayFabError error)
     {
         Debug.Log("Login account: Error");
         Debug.Log(error.GenerateErrorReport());
@@ -49,13 +51,14 @@ public class PlayFabLogin : MonoBehaviour
 
     public void Submit()
     {
-        var request = new UpdateUserTitleDisplayNameRequest{
+        var request = new UpdateUserTitleDisplayNameRequest
+        {
             DisplayName = firstStartUI.GetComponentInChildren<InputField>().text
         };
         PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnError);
     }
 
-    void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result)
+    private void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result)
     {
         Debug.Log("Display Name Update");
         firstStartUI.SetActive(false);

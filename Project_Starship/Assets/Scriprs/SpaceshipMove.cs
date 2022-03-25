@@ -6,21 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class SpaceshipMove : MonoBehaviour
 {
-    public Vector3 lastPos;
+    private Vector3 lastPos;
     private bool screenStatusGame = false;
     private bool screenStatusHangar = false;
 
     private void Start()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        if (scene.name == "Game")
+        switch (SceneManager.GetActiveScene().name)
         {
-            screenStatusGame = true;
-            lastPos = this.transform.position;
-        }
-        else if (scene.name == "Hangar")
-        {
-            screenStatusHangar = true;
+            case "Game":
+                screenStatusGame = true;
+                lastPos = this.transform.position;
+                break;
+            case "Hangar":
+                screenStatusHangar = true;
+                break;
         }
     }
 
@@ -38,7 +38,7 @@ public class SpaceshipMove : MonoBehaviour
 
                     Vector3 spaceshipPos = this.transform.position;
                     spaceshipPos.x = touchPos3D.x;
-                    this.transform.position = spaceshipPos;
+                    this.transform.position = Vector3.Lerp(this.transform.position, spaceshipPos, 0.5f);
 
                     if (lastPos.x > this.transform.position.x)
                     {
@@ -60,15 +60,15 @@ public class SpaceshipMove : MonoBehaviour
         }
         else if (screenStatusHangar == true)
         {
-            if(Input.touchCount > 0)
+            if (Input.touchCount > 0)
             {
                 float rotateSpeed = 0.1f;
                 Touch touchZero = Input.GetTouch(0);
-                
-                if(touchZero.phase == TouchPhase.Moved)
+
+                if (touchZero.phase == TouchPhase.Moved)
                 {
                     this.transform.Rotate(-(rotateSpeed * touchZero.deltaPosition.y), -(rotateSpeed * touchZero.deltaPosition.x), 0f);
-                }       
+                }
             }
         }
     }

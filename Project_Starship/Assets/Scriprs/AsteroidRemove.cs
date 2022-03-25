@@ -7,19 +7,20 @@ public class AsteroidRemove : MonoBehaviour
     public GameObject explosionParticlePrefab;
     private bool checkOneTry = false;
 
-    private void OnCollisionEnter(Collision other) {
-        if(checkOneTry == false)
+    private void OnCollisionEnter(Collision other)
+    {
+        if (checkOneTry == false)
         {
             GameObject thisGO = this.gameObject;
             string colliderTag = other.collider.tag;
-            List<string> listTags = new List<string> {"Bullet" , "Starship", "AsteroidTrigger"};
-            if(listTags.Contains(colliderTag))
+            List<string> listTags = new List<string> { "Bullet", "Starship", "AsteroidTrigger" };
+            if (listTags.Contains(colliderTag))
             {
                 checkOneTry = true;
                 switch (colliderTag)
                 {
                     case "Bullet":
-                        if(thisGO.tag == "Crystal")
+                        if (thisGO.tag == "Crystal")
                         {
                             Money money = GameObject.Find("CountMoney").GetComponent<Money>();
                             money.countMoney++;
@@ -28,7 +29,7 @@ public class AsteroidRemove : MonoBehaviour
                         AsteroidDestroy(thisGO);
                         break;
                     case "Starship":
-                        if(GameObject.Find("CountHealth").GetComponent<Health>().countHealth > 1)
+                        if (GameObject.Find("CountHealth").GetComponent<Health>().countHealth > 1)
                         {
                             AsteroidDestroy(thisGO);
                         }

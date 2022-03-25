@@ -38,7 +38,7 @@ public class Buttons : MonoBehaviour
         HangarSpaceship hangarSpaceship = mainCamera.GetComponent<HangarSpaceship>();
         int count = hangarSpaceship.spaceshipPrefabUnlock.Count - 1;
         int id = hangarSpaceship.spaceshipId;
-        if(id == 0)
+        if (id == 0)
         {
             hangarSpaceship.spaceshipId = count;
         }
@@ -56,7 +56,7 @@ public class Buttons : MonoBehaviour
         HangarSpaceship hangarSpaceship = mainCamera.GetComponent<HangarSpaceship>();
         int count = hangarSpaceship.spaceshipPrefabUnlock.Count - 1;
         int id = hangarSpaceship.spaceshipId;
-        if(id == count)
+        if (id == count)
         {
             hangarSpaceship.spaceshipId = 0;
         }
@@ -85,7 +85,7 @@ public class Buttons : MonoBehaviour
         Text[] texts = this.GetComponentsInChildren<Text>();
         int count = int.Parse(texts[1].text);
         int money = PlayerPrefs.GetInt("Money");
-        if(money >= count)
+        if (money >= count)
         {
             PlayerPrefs.SetInt("Money", (money -= count));
             PlayerPrefs.SetInt(this.GetComponentInChildren<Button>().name, (PlayerPrefs.GetInt(this.GetComponentInChildren<Button>().name) + 1));
@@ -99,7 +99,7 @@ public class Buttons : MonoBehaviour
         Text[] texts = this.GetComponentsInChildren<Text>();
         int count = int.Parse(texts[1].text);
         int money = PlayerPrefs.GetInt("Money");
-        if(money >= count)
+        if (money >= count)
         {
             PlayerPrefs.SetInt("Money", (money -= count));
             PlayerPrefs.SetString(this.GetComponentInChildren<Button>().name, true.ToString());

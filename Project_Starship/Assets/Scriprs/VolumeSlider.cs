@@ -11,17 +11,17 @@ public class VolumeSlider : MonoBehaviour
     public Slider sfxSlider;
     public Text musicText;
     public Text sfxText;
-    
+
     private void Start()
     {
         musicSlider.value = PlayerPrefs.GetInt("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetInt("SFXVolume");
     }
 
-    public void UpdateMusicValue() 
+    public void UpdateMusicValue()
     {
         musicText.text = (musicSlider.value * 10).ToString() + "%";
-        if(musicSlider.value == 0)
+        if (musicSlider.value == 0)
         {
             audioMixer.SetFloat("Music", -80f);
         }
@@ -31,10 +31,10 @@ public class VolumeSlider : MonoBehaviour
         }
     }
 
-    public void UpdateSFXValue() 
+    public void UpdateSFXValue()
     {
         sfxText.text = (sfxSlider.value * 10).ToString() + "%";
-        if(sfxSlider.value == 0)
+        if (sfxSlider.value == 0)
         {
             audioMixer.SetFloat("SFX", -80f);
         }

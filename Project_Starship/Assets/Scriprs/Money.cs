@@ -10,7 +10,7 @@ public class Money : MonoBehaviour
     private int money;
     private Text moneyUI;
     private Scene scene;
-    
+
     private void Start()
     {
         moneyUI = this.gameObject.GetComponent<Text>();
@@ -21,11 +21,11 @@ public class Money : MonoBehaviour
     public void UpdateMoney()
     {
         money = PlayerPrefs.GetInt("Money");
-        if(scene.name == "Shop")
+        if (scene.name == "Shop")
         {
             moneyUI.text = money.ToString();
         }
-        else if(scene.name == "Game")
+        else if (scene.name == "Game")
         {
             moneyUI.text = money.ToString() + "+" + countMoney;
         }

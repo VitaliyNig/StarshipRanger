@@ -10,18 +10,26 @@ public class HangarSpaceship : MonoBehaviour
     public int spaceshipId;
     public Vector3 spawnPos;
     public Vector3 spawnRotate;
-    public Text buttonSelect;
+    public Button buttonLeft;
+    public Button buttonRight;
+    public Button buttonSelect;
     private GameObject spaceshipGO;
 
     private void Start()
     {
         ShopItems shopItems = new ShopItems();
-        foreach(var i in shopItems.starshipsList)
+        foreach (var i in shopItems.starshipsList)
         {
-            if(bool.Parse(PlayerPrefs.GetString(i.StarshipsID.ToString())) == true)
+            if (bool.Parse(PlayerPrefs.GetString(i.StarshipsID.ToString())) == true)
             {
                 spaceshipPrefabUnlock.Add(spaceshipPrefab[i.StarshipsID]);
             }
+        }
+        if (spaceshipPrefabUnlock.Count <= 1)
+        {
+            buttonLeft.interactable = false;
+            buttonRight.interactable = false;
+            buttonSelect.interactable = false;
         }
         spaceshipId = spaceshipPrefabUnlock.FindIndex(item => item.name == spaceshipPrefab[PlayerPrefs.GetInt("SpaceshipId")].name);
         Reload();
@@ -37,13 +45,14 @@ public class HangarSpaceship : MonoBehaviour
 
     public void Check()
     {
-        if(spaceshipPrefabUnlock[spaceshipId].name == spaceshipPrefab[PlayerPrefs.GetInt("SpaceshipId")].name)
+        Text buttonText = buttonSelect.GetComponentInChildren<Text>();
+        if (spaceshipPrefabUnlock[spaceshipId].name == spaceshipPrefab[PlayerPrefs.GetInt("SpaceshipId")].name)
         {
-            buttonSelect.text = "Selected";
+            buttonText.text = "Selected";
         }
         else
         {
-            buttonSelect.text = "Select";
+            buttonText.text = "Select";
         }
     }
 

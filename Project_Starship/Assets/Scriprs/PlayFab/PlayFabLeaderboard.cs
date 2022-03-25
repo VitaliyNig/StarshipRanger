@@ -9,23 +9,27 @@ using PlayFab.ClientModels;
 public class PlayFabLeaderboard : MonoBehaviour
 {
     public GameObject rowPrefab;
+    public GameObject rowPrefabPlayer;
     public Transform rowsParent;
-    
-    void Start()
+    private string thisPlayFabId;
+
+    private void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
-        if(scene.name == "Leaderboard")
+        if (scene.name == "Leaderboard")
         {
+            GetAccountInfo();
             GetLeaderboard();
         }
     }
 
     public void SetLeaderboard(int score)
     {
-        var request = new UpdatePlayerStatisticsRequest{
+        var request = new UpdatePlayerStatisticsRequest
+        {
             Statistics = new List<StatisticUpdate>{
                 new StatisticUpdate{
-                    StatisticName = "GameSpore", 
+                    StatisticName = "GameSpore",
                     Value = score
                 }
             }
@@ -33,31 +37,40 @@ public class PlayFabLeaderboard : MonoBehaviour
         PlayFabClientAPI.UpdatePlayerStatistics(request, OnSetLeaderboard, OnError);
     }
 
-    void OnSetLeaderboard(UpdatePlayerStatisticsResult result)
+    private void OnSetLeaderboard(UpdatePlayerStatisticsResult result)
     {
         Debug.Log("Leaderboard Update");
     }
 
     public void GetLeaderboard()
     {
-        var request = new GetLeaderboardRequest{
-            StatisticName = "GameSpore", 
+        var request = new GetLeaderboardRequest
+        {
+            StatisticName = "GameSpore",
             StartPosition = 0,
             MaxResultsCount = 100
         };
         PlayFabClientAPI.GetLeaderboard(request, OnGetLeaderboard, OnError);
     }
 
-    void OnGetLeaderboard(GetLeaderboardResult result)
+    private void OnGetLeaderboard(GetLeaderboardResult result)
     {
-        foreach(Transform item in rowsParent)
+        foreach (Transform item in rowsParent)
         {
             Destroy(item.gameObject);
         }
-        
-        foreach(var item in result.Leaderboard)
+
+        foreach (var item in result.Leaderboard)
         {
-            GameObject rowGo = Instantiate(rowPrefab, rowsParent);
+            GameObject rowGo;
+            if (item.PlayFabId.ToString() == thisPlayFabId)
+            {
+                rowGo = Instantiate(rowPrefabPlayer, rowsParent);
+            }
+            else
+            {
+                rowGo = Instantiate(rowPrefab, rowsParent);
+            }
             Text[] texts = rowGo.GetComponentsInChildren<Text>();
             texts[0].text = (item.Position + 1).ToString();
             texts[1].text = item.DisplayName;
@@ -65,7 +78,18 @@ public class PlayFabLeaderboard : MonoBehaviour
         }
     }
 
-    void OnError(PlayFabError error)
+    private void GetAccountInfo()
+    {
+        var request = new GetAccountInfoRequest();
+        PlayFabClientAPI.GetAccountInfo(request, OnGetAccountInfo, OnError);
+    }
+
+    private void OnGetAccountInfo(GetAccountInfoResult result)
+    {
+        thisPlayFabId = result.AccountInfo.PlayFabId;
+    }
+
+    private void OnError(PlayFabError error)
     {
         Debug.Log("Leaderboard Error");
         Debug.Log(error.GenerateErrorReport());

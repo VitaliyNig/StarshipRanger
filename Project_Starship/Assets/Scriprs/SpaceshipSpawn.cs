@@ -7,7 +7,7 @@ public class SpaceshipSpawn : MonoBehaviour
     public List<GameObject> spaceshipPrefab;
     public Vector3 screenSize;
     public float spawnPosY = 0f;
-    
+
     private void Start()
     {
         Spawn();

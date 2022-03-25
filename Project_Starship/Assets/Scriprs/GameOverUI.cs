@@ -15,7 +15,7 @@ public class GameOverUI : MonoBehaviour
     public void StartScript()
     {
         buttonClick = false;
-        if(checkOneTry == false)
+        if (checkOneTry == false)
         {
             GameOverMenu();
         }
@@ -29,7 +29,7 @@ public class GameOverUI : MonoBehaviour
     IEnumerator RespawnTimer()
     {
         yield return new WaitForSeconds(timeIsVisible);
-        if(buttonClick == false)
+        if (buttonClick == false)
         {
             GameOverMenu();
         }
@@ -45,7 +45,7 @@ public class GameOverUI : MonoBehaviour
     {
         gameOverUI.SetActive(true);
         int score = int.Parse(countScoreUI.GetComponent<Text>().text);
-        if(PlayerPrefs.GetInt("BestScore") < score)
+        if (PlayerPrefs.GetInt("BestScore") < score)
         {
             this.gameObject.GetComponent<PlayFabLeaderboard>().SetLeaderboard(score);
             PlayerPrefs.SetInt("BestScore", score);

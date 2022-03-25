@@ -13,7 +13,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     public void PlayRewardedAd()
     {
-        if(Advertisement.IsReady("Rewarded_Android"))
+        if (Advertisement.IsReady("Rewarded_Android"))
         {
             Advertisement.Show("Rewarded_Android");
         }
@@ -30,7 +30,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
-        if(placementId == "Rewarded_Android" && showResult == ShowResult.Finished)
+        if (placementId == "Rewarded_Android" && showResult == ShowResult.Finished)
         {
             GameObject.Find("Respawn").GetComponent<Respawn>().ButtonAd();
             Debug.Log("Rewarded ad finished");

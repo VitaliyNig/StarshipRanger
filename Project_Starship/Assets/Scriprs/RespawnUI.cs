@@ -12,17 +12,17 @@ public class RespawnUI : MonoBehaviour
     private void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
-        if(scene.name == "Game")
+        if (scene.name == "Game")
         {
             health = GameObject.Find("CountHealth").GetComponent<Health>();
         }
     }
 
     private void OnCollisionEnter(Collision other)
-    {   
+    {
         health.countHealth--;
         health.UpdateHealth();
-        if(health.countHealth == 0)
+        if (health.countHealth == 0)
         {
             ParticleSystem explosionParticle = explosionParticlePrefab.GetComponentInChildren<ParticleSystem>();
             ParticleSystem ps = ParticleSystem.Instantiate(explosionParticle, this.transform.position, Quaternion.identity);

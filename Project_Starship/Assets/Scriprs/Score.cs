@@ -23,7 +23,7 @@ public class Score : MonoBehaviour
 
     private void UpdateScore()
     {
-        if(GameIsActive == true)
+        if (GameIsActive == true)
         {
             int score = int.Parse(ScoreText.text);
             score += 1;

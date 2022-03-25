@@ -21,21 +21,21 @@ public class Health : MonoBehaviour
     {
         images = this.GetComponentsInChildren<Image>();
         countHealth = PlayerPrefs.GetInt("Health");
-        for(int i = 0; i < countHealth; i++)
+        for (int i = 0; i < countHealth; i++)
         {
-            images[4-i].color = colorHealth;
+            images[4 - i].color = colorHealth;
         }
     }
 
     public void UpdateHealth()
     {
-        foreach(var i in images)
+        foreach (var i in images)
         {
             i.color = colorDeath;
         }
-        for(int i = 0; i < countHealth; i++)
+        for (int i = 0; i < countHealth; i++)
         {
-            images[4-i].color = colorHealth;
+            images[4 - i].color = colorHealth;
         }
     }
 }

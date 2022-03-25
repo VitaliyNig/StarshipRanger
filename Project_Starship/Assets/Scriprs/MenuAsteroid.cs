@@ -7,22 +7,22 @@ public class MenuAsteroid : MonoBehaviour
     public AstreroidsLists AsteroidsPrefabs = new AstreroidsLists();
     public int countAsteroid;
     public float spawnPosX;
-    
+
     [System.Serializable]
     public class AsteroidList
     {
         public List<GameObject> asteroidPrefab;
     }
- 
+
     [System.Serializable]
     public class AstreroidsLists
     {
         public List<AsteroidList> asteroidsLists;
     }
-    
+
     private void Start()
     {
-        for(int i = 0; i < countAsteroid; i++)
+        for (int i = 0; i < countAsteroid; i++)
         {
             SpawnAsteroid(new Vector3(Random.Range(-spawnPosX, spawnPosX), Random.Range(-15f, 15f), Random.Range(20f, 40f)));
         }

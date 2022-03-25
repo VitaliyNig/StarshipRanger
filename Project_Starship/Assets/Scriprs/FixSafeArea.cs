@@ -13,13 +13,13 @@ public class FixSafeArea : MonoBehaviour
     public GameObject scrollArea;
     public GameObject buttonBack;
     private Scene scene;
-    
-    private void Awake() 
+
+    private void Awake()
     {
         scene = SceneManager.GetActiveScene();
-        if(scene.name == "Game")
+        if (scene.name == "Game")
         {
-            if(Screen.safeArea.height != Screen.height)
+            if (Screen.safeArea.height != Screen.height)
             {
                 titles.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -50, 0);
                 countScore.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -75, 0);

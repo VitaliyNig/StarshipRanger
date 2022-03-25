@@ -4,31 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopItems : MonoBehaviour
-{   
+{
     public GameObject rowUpgradesPrefab;
     public Transform rowsUpgradesParent;
     public GameObject rowStarhipsPrefab;
     public Transform rowsStarhipsParent;
     public List<Sprite> spriteList;
-    
+
     public class Upgrades
     {
-        public string Name {get; set;}
-        public int Count {get; set;}
+        public string Name { get; set; }
+        public int Count { get; set; }
     }
 
     [SerializeField]
     List<Upgrades> upgradesList = new List<Upgrades>()
     {
         new Upgrades{ Name = "Health", Count = 100 },
-        new Upgrades{ Name = "FireRate", Count = 100 }
+        new Upgrades{ Name = "Fire Rate", Count = 100 },
+        new Upgrades{ Name = "Aim Assistance", Count = 100}
     };
 
     public class Starships
     {
-        public int StarshipsID {get; set;}
-        public int Count {get; set;}
-        public bool Status {get; set;}
+        public int StarshipsID { get; set; }
+        public int Count { get; set; }
+        public bool Status { get; set; }
     }
 
     [SerializeField]
@@ -50,7 +51,7 @@ public class ShopItems : MonoBehaviour
 
     private void UpgradesList()
     {
-        foreach(var u in upgradesList)
+        foreach (var u in upgradesList)
         {
             GameObject rowUpgradesGo = Instantiate(rowUpgradesPrefab, rowsUpgradesParent);
             Text[] texts = rowUpgradesGo.GetComponentsInChildren<Text>();
@@ -58,14 +59,14 @@ public class ShopItems : MonoBehaviour
             texts[2].text = u.Name;
 
             Toggle[] toggles = rowUpgradesGo.GetComponentsInChildren<Toggle>();
-            for(int c = 0; c < PlayerPrefs.GetInt(u.Name); c++)
+            for (int c = 0; c < PlayerPrefs.GetInt(u.Name); c++)
             {
                 toggles[c].isOn = true;
             }
 
             Button button = rowUpgradesGo.GetComponentInChildren<Button>();
             button.name = u.Name;
-            if(PlayerPrefs.GetInt(u.Name) >= 5)
+            if (PlayerPrefs.GetInt(u.Name) >= 5)
             {
                 button.interactable = false;
                 texts[1].text = "‒";
@@ -75,7 +76,7 @@ public class ShopItems : MonoBehaviour
 
     private void StarshipsList()
     {
-        foreach(var s in starshipsList)
+        foreach (var s in starshipsList)
         {
             GameObject rowStarhipsGo = Instantiate(rowStarhipsPrefab, rowsStarhipsParent);
             Text[] texts = rowStarhipsGo.GetComponentsInChildren<Text>();
@@ -84,7 +85,7 @@ public class ShopItems : MonoBehaviour
 
             Button button = rowStarhipsGo.GetComponentInChildren<Button>();
             button.name = s.StarshipsID.ToString();
-            if(bool.Parse(PlayerPrefs.GetString(s.StarshipsID.ToString())) == true)
+            if (bool.Parse(PlayerPrefs.GetString(s.StarshipsID.ToString())) == true)
             {
                 rowStarhipsGo.GetComponentInChildren<Button>().interactable = false;
                 texts[1].text = "‒";
@@ -94,7 +95,7 @@ public class ShopItems : MonoBehaviour
 
     public void UpgradesListReload()
     {
-        foreach(Transform child in rowsUpgradesParent.transform)
+        foreach (Transform child in rowsUpgradesParent.transform)
         {
             Destroy(child.gameObject);
         }
@@ -103,7 +104,7 @@ public class ShopItems : MonoBehaviour
 
     public void StarshipsListReload()
     {
-        foreach(Transform child in rowsStarhipsParent.transform)
+        foreach (Transform child in rowsStarhipsParent.transform)
         {
             Destroy(child.gameObject);
         }
