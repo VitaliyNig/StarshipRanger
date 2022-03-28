@@ -35,6 +35,10 @@ public class PlayerPrefsSettings : MonoBehaviour
         {
             PlayerPrefs.SetInt("Money", 0);
         }
+        if (!PlayerPrefs.HasKey("MasterVolume"))
+        {
+            PlayerPrefs.SetInt("MasterVolume", 10);
+        }
         if (!PlayerPrefs.HasKey("MusicVolume"))
         {
             PlayerPrefs.SetInt("MusicVolume", 10);

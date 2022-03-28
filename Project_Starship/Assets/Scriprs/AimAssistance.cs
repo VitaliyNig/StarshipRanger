@@ -4,27 +4,37 @@ using UnityEngine;
 
 public class AimAssistance : MonoBehaviour
 {
-    private float radiusAssistance;
+    private float forceAssistance;
+    private Vector3 sizeAssistance;
+    private int layerMask;
+    private Transform thisTransform;
 
     private void Start()
     {
-        radiusAssistance = (0.3f * PlayerPrefs.GetInt("Aim Assistance"));
+        forceAssistance = (0.5f * PlayerPrefs.GetInt("Aim Assistance"));
+        sizeAssistance.x = forceAssistance;
+        sizeAssistance.y = forceAssistance;
+        sizeAssistance.z = forceAssistance;
+        layerMask = (1 << LayerMask.NameToLayer("Asteroid"));
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        Collider[] colliders = Physics.OverlapSphere(this.transform.position, radiusAssistance, 1 << 12);
+        thisTransform = this.transform;
+        Collider[] colliders = Physics.OverlapBox(thisTransform.position, sizeAssistance, thisTransform.localRotation, layerMask);
         if (colliders != null)
         {
             foreach (var c in colliders)
             {
-                this.transform.position = Vector3.MoveTowards(this.transform.position, c.transform.position, 0.05f);
+                this.transform.position = Vector3.MoveTowards(this.transform.position, c.transform.position, 0.5f);
             }
         }
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(this.transform.position, radiusAssistance);
+        Gizmos.color = Color.red;
+        Gizmos.matrix = Matrix4x4.TRS(thisTransform.position, thisTransform.rotation, thisTransform.localScale);
+        Gizmos.DrawWireCube(Vector3.zero, (sizeAssistance * 2));
     }
 }

@@ -11,7 +11,7 @@ public class PlayFabLeaderboard : MonoBehaviour
     public GameObject rowPrefab;
     public GameObject rowPrefabPlayer;
     public Transform rowsParent;
-    private string thisPlayFabId;
+    private static string thisPlayFabId { get; set; }
 
     private void Start()
     {
@@ -19,7 +19,6 @@ public class PlayFabLeaderboard : MonoBehaviour
         if (scene.name == "Leaderboard")
         {
             GetAccountInfo();
-            GetLeaderboard();
         }
     }
 
@@ -39,7 +38,7 @@ public class PlayFabLeaderboard : MonoBehaviour
 
     private void OnSetLeaderboard(UpdatePlayerStatisticsResult result)
     {
-        Debug.Log("Leaderboard Update");
+        Debug.Log("Leaderboard: Updated");
     }
 
     public void GetLeaderboard()
@@ -81,17 +80,25 @@ public class PlayFabLeaderboard : MonoBehaviour
     private void GetAccountInfo()
     {
         var request = new GetAccountInfoRequest();
-        PlayFabClientAPI.GetAccountInfo(request, OnGetAccountInfo, OnError);
+        PlayFabClientAPI.GetAccountInfo(request, OnGetAccountInfo, OnReload);
     }
 
     private void OnGetAccountInfo(GetAccountInfoResult result)
     {
         thisPlayFabId = result.AccountInfo.PlayFabId;
+        GetLeaderboard();
+    }
+
+    private void OnReload(PlayFabError error)
+    {
+        Debug.Log("Account Info: Error");
+        Debug.Log(error.GenerateErrorReport());
+        GetAccountInfo();
     }
 
     private void OnError(PlayFabError error)
     {
-        Debug.Log("Leaderboard Error");
+        Debug.Log("Leaderboard: Error");
         Debug.Log(error.GenerateErrorReport());
     }
 }

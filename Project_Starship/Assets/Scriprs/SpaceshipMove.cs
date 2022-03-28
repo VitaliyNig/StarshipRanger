@@ -48,14 +48,13 @@ public class SpaceshipMove : MonoBehaviour
                     {
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -30f), 3f);
                     }
-
                     lastPos = this.transform.position;
                 }
             }
 
             if (lastPos.x == this.transform.position.x)
             {
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0f), 0.3f);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0f), 1f);
             }
         }
         else if (screenStatusHangar == true)

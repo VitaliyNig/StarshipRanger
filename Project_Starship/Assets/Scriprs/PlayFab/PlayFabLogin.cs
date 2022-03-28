@@ -60,7 +60,7 @@ public class PlayFabLogin : MonoBehaviour
 
     private void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result)
     {
-        Debug.Log("Display Name Update");
+        Debug.Log("Display Name Updated");
         firstStartUI.SetActive(false);
     }
 }

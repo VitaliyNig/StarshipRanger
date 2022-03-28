@@ -27,7 +27,7 @@ public class AsteroidSpawn : MonoBehaviour
     private void Start()
     {
         screenSize = Camera.main.ViewportToWorldPoint(new Vector2(1f, 1f));
-        Debug.Log(screenSize);
+        Debug.Log("Screen Size: " + screenSize);
         asteroidCount = 1;
         StartCoroutine(SpawnTimer());
         InvokeRepeating("Difficulty", 0.5f, 0.5f);

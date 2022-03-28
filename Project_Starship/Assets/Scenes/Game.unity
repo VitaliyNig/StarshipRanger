@@ -1124,8 +1124,6 @@ MonoBehaviour:
       - {fileID: 2698653205730451428, guid: 10d8f2b8a31255f4187905ae3d60e0e4, type: 3}
   spawnRate: 1
   asteroidSpeed: 5
-  score: 0
-  asteroidCount: 1
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2175,7 +2173,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 4968570738822579823}
   countScoreUI: {fileID: 1283515489}
   countMoneyUI: {fileID: 2003612026}
-  timeIsVisible: 10
+  timeIsVisible: 5
   buttonClick: 0
 --- !u!114 &2045557521848117778
 MonoBehaviour:
@@ -3858,7 +3856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29723988c6370cd479d23cd45d0b18ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countMoneyRespawn: 25
+  countMoneyRespawn: 20
   buttonMoney: {fileID: 8604261522739076855}
   countScoreUI: {fileID: 1283515489}
   countHealthUI: {fileID: 888586622}

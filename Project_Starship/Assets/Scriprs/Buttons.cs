@@ -19,7 +19,6 @@ public class Buttons : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
-        Debug.Log("Game closed");
     }
 
     public void MainMenu()
@@ -121,7 +120,8 @@ public class Buttons : MonoBehaviour
     public void PlayerPrefsRemove()
     {
         PlayerPrefs.SetInt("Health", 1);
-        PlayerPrefs.SetInt("FireRate", 1);
+        PlayerPrefs.SetInt("Fire Rate", 1);
+        PlayerPrefs.SetInt("Aim Assistance", 1);
         PlayerPrefs.SetInt("SpaceshipId", 2);
         PlayerPrefs.SetInt("BestScore", 0);
         PlayerPrefs.SetInt("Money", 0);

@@ -43,7 +43,7 @@ public class ShopItems : MonoBehaviour
         new Starships{ StarshipsID = 5, Count = 300, Status = false}
     };
 
-    private void Start()
+    private void Awake()
     {
         UpgradesList();
         StarshipsList();
